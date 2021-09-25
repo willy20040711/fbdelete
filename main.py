@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def parse_fb_signed_request(signed_request):
     encoded_sig, payload = signed_request.split('.', 2)
-    secret = '50b6b5ba6279f1e5f5e1ca28297b34e8'
+    secret = ''
 
     encoded_sig = encoded_sig.encode('ascii')
     payload = payload.encode('ascii')
@@ -28,7 +28,7 @@ def parse_fb_signed_request(signed_request):
         return data
 
 
-@app.route('/')
+@app.route('/helloworld3')
 def hello_world():
     return 'Hello World!'
 
@@ -49,4 +49,4 @@ def data_deletion_callback():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=443, debug=True, threaded=True)
